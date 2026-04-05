@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase";
 import type { Recipe } from "@/lib/types";
 
@@ -27,6 +28,7 @@ interface RecipeCardProps {
 export default function RecipeCard({ recipe }: RecipeCardProps) {
   const [bookmarked, setBookmarked] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const router = useRouter();
   const supabase = createClient();
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
 
   const toggleBookmark = async (e: React.MouseEvent) => {
     e.preventDefault();
-    if (!userId) { window.location.href = "/auth"; return; }
+    if (!userId) { router.push("/auth"); return; }
     if (bookmarked) {
       await supabase.from("bookmarks").delete().eq("recipe_id", recipe.id).eq("user_id", userId);
       setBookmarked(false);

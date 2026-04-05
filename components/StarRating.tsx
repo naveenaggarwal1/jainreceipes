@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase";
 
 interface StarRatingProps {
@@ -17,10 +18,11 @@ export default function StarRating({ recipeId, userId, existingScore, existingRe
   const [review, setReview] = useState(existingReview ?? "");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
   const supabase = createClient();
 
   const handleSave = async () => {
-    if (!userId) { window.location.href = "/auth"; return; }
+    if (!userId) { router.push("/auth"); return; }
     if (!score) { setError("Pick a star rating first."); return; }
     setSaving(true);
     setError("");

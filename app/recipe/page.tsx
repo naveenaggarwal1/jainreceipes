@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase";
 import StarRating from "@/components/StarRating";
@@ -18,6 +18,7 @@ const TAG_LABELS: Record<string, string> = {
 function RecipeDetailContent() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id") ?? "";
+  const router = useRouter();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [ratings, setRatings] = useState<Rating[]>([]);
   const [user, setUser] = useState<User | null>(null);
@@ -66,7 +67,7 @@ function RecipeDetailContent() {
   }, [user, ratings]);
 
   const toggleBookmark = async () => {
-    if (!user) { window.location.href = "/jainreceipes/auth"; return; }
+    if (!user) { router.push("/auth"); return; }
     if (bookmarked) {
       await supabase.from("bookmarks").delete().eq("recipe_id", id).eq("user_id", user.id);
       setBookmarked(false);
