@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(git -C /c/playground/jainreceipes add next.config.ts lib/supabase.ts)",
+      "Bash(git -C /c/playground/jainreceipes commit -m 'fix: make build resilient to missing env vars; disable eslint during builds:*)",
+      "Bash(git -C /c/playground/jainreceipes push)",
+      "Bash(npm install:*)",
+      "Bash(git -C /c/playground/jainreceipes add package.json package-lock.json)",
+      "Bash(git -C /c/playground/jainreceipes commit -m 'fix: add missing @supabase/ssr and @supabase/supabase-js dependencies:*)",
+      "Bash(git -C /c/playground/jainreceipes add lib/supabase.ts)",
+      "Bash(git -C /c/playground/jainreceipes commit -m 'fix: use || fallback for env vars to handle empty string secrets in CI:*)",
+      "Bash(git -C /c/playground/jainreceipes commit --allow-empty -m \"ci: retrigger deployment\")",
+      "Bash(git -C /c/playground/jainreceipes commit --allow-empty -m \"ci: retrigger after enabling GitHub Pages\")",
+      "Bash(git -C /c/playground/jainreceipes add .github/workflows/deploy.yml)",
+      "Bash(git -C /c/playground/jainreceipes commit -m 'fix: move pages permissions to deploy job:*)",
+      "Bash(git -C /c/playground/jainreceipes commit --allow-empty -m \"ci: retrigger after GitHub Pages configuration\")",
+      "Bash(git -C /c/playground/jainreceipes commit --allow-empty -m \"ci: retrigger after fixing environment protection rules\")",
+      "Bash(git -C /c/playground/jainreceipes commit --allow-empty -m \"ci: retrigger build with correct Supabase secrets\")",
+      "Bash(git -C /c/playground/jainreceipes commit -m 'fix: hardcode public Supabase credentials as fallback for GitHub Pages:*)",
+      "Bash(git -C /c/playground/jainreceipes add components/StarRating.tsx components/RecipeCard.tsx app/recipe/page.tsx)",
+      "Bash(git -C /c/playground/jainreceipes commit -m 'fix: use router.push instead of window.location for basePath-aware redirects:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
