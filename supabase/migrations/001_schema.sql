@@ -154,4 +154,31 @@ insert into public.recipes (title, description, ingredients, steps, category, ja
   'Dessert',
   array['no_onion_garlic','paryushan'],
   'Admin', true, '2026-04-04T21:35:03.302Z'
+),
+(
+  'Dal Bati',
+  'A classic Rajasthani feast — crispy baked wheat balls served with a rich, spiced five-lentil dal. A hearty Jain comfort meal.',
+  array['Wheat flour','semolina (sooji)','ghee','salt','baking soda','toor dal','chana dal','moong dal','masoor dal','urad dal','turmeric','cumin seeds','mustard seeds','green chili','ginger','coriander powder','garam masala','lemon juice','fresh coriander'],
+  array['Mix wheat flour, semolina, 3 tbsp ghee, salt and baking soda. Add water and knead into a stiff dough. Shape into round balls (bati).','Bake batis in a preheated oven at 180°C for 30 minutes, turning halfway, until golden and cooked through.','Wash and soak all five dals together for 30 minutes. Pressure cook with turmeric, salt and water for 4–5 whistles.','Heat ghee in a pan. Splutter cumin and mustard seeds, add ginger and green chili. Add coriander powder and garam masala.','Add the tempering to the cooked dal. Simmer for 5 minutes. Finish with lemon juice and fresh coriander.','Crack each bati open, pour hot ghee inside, and serve alongside the dal.'],
+  'Main Dish',
+  array['no_onion_garlic','no_root_veg'],
+  'Admin', true, '2026-04-05T10:00:00.000Z'
+),
+(
+  'Gatte ki Sabzi',
+  'Soft gram flour dumplings simmered in a tangy yogurt-based gravy — a beloved Rajasthani Jain curry.',
+  array['Besan (gram flour)','turmeric','red chili powder','coriander powder','ajwain (carom seeds)','ghee','salt','yogurt','cumin seeds','mustard seeds','ginger','green chili','asafoetida (hing)','garam masala','fresh coriander','oil'],
+  array['Mix besan with turmeric, chili powder, ajwain, salt and 1 tbsp oil. Add water gradually to make a stiff dough.','Roll into long cylinders (gattas) about 1 cm thick. Boil in salted water for 10 minutes until firm. Remove and slice into 2 cm pieces.','Whisk yogurt with coriander powder, turmeric, chili powder and salt. Keep aside.','Heat ghee in a kadai. Add hing, mustard and cumin seeds. Add ginger and green chili, sauté briefly.','Lower the heat, add the whisked yogurt mixture slowly, stirring constantly to prevent curdling.','Add the cooked gattas and simmer on low flame for 10 minutes. Finish with garam masala and fresh coriander.'],
+  'Main Dish',
+  array['no_onion_garlic','no_root_veg'],
+  'Admin', true, '2026-04-05T10:00:00.000Z'
+),
+(
+  'Sev Tamatar ki Sabzi',
+  'A quick and vibrant Gujarati curry made with juicy tomatoes and crunchy sev — ready in under 20 minutes.',
+  array['Ripe tomatoes','sev (thin crispy chickpea noodles)','ghee','cumin seeds','mustard seeds','green chili','ginger','turmeric','red chili powder','coriander powder','sugar','salt','fresh coriander','lemon juice'],
+  array['Heat ghee in a pan. Splutter mustard and cumin seeds. Add green chili and ginger, sauté for 30 seconds.','Add chopped tomatoes, turmeric, red chili powder, coriander powder, salt and a pinch of sugar.','Cook on medium heat for 8–10 minutes, stirring occasionally, until tomatoes break down into a thick masala.','Add a splash of water if needed to adjust consistency. Taste and balance sweet, salt and spice.','Just before serving, stir in half the sev so it softens slightly into the curry.','Garnish with remaining crunchy sev, fresh coriander and a squeeze of lemon juice. Serve hot with roti.'],
+  'Main Dish',
+  array['no_onion_garlic','no_root_veg'],
+  'Admin', true, '2026-04-05T10:00:00.000Z'
 );
