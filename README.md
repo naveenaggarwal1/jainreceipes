@@ -93,4 +93,12 @@ update public.profiles set role = 'admin' where id = '<your-user-id>';
 
 ---
 
+---
+
+## Credits & Inspiration
+
+This project was inspired by **[@shravan-swagwalapm](https://github.com/shravan-swagwalapm)** — watching his class on vibe coding as a Product Manager is what gave me the push to finally stop spectating and start building. If you're a PM on the fence about trying this, go watch his video first.
+
+---
+
 *Built with [Claude Code](https://claude.ai/code) — Ahimsa in every bite* 🙏
