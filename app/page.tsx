@@ -1,65 +1,124 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { createClient } from "@/lib/supabase";
+import RecipeCard from "@/components/RecipeCard";
+import FilterBar from "@/components/FilterBar";
+import type { Recipe, JainTag } from "@/lib/types";
+
+export default function HomePage() {
+  const [featured, setFeatured] = useState<Recipe[]>([]);
+  const [activeTags, setActiveTags] = useState<JainTag[]>([]);
+  const [filtered, setFiltered] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function load() {
+      const { data } = await supabase
+        .from("recipes_with_ratings")
+        .select("*")
+        .eq("approved", true)
+        .order("avg_rating", { ascending: false })
+        .limit(3);
+      setFeatured(data ?? []);
+      setLoading(false);
+    }
+    load();
+  }, []);
+
+  useEffect(() => {
+    async function filter() {
+      let query = supabase
+        .from("recipes_with_ratings")
+        .select("*")
+        .eq("approved", true)
+        .order("created_at", { ascending: false })
+        .limit(8);
+      if (activeTags.length > 0) {
+        query = query.contains("jain_tags", activeTags);
+      }
+      const { data } = await query;
+      setFiltered(data ?? []);
+    }
+    filter();
+  }, [activeTags]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div>
+      {/* Hero */}
+      <section className="relative bg-gradient-to-br from-orange-500 to-amber-600 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E\")",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        <div className="relative max-w-4xl mx-auto px-4 py-20 text-center">
+          <div className="text-5xl mb-4">🙏</div>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+            Authentic Jain Recipes,<br />Made with Ahimsa
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-orange-100 text-lg mb-8 max-w-xl mx-auto">
+            Discover, share, and celebrate vegetarian cooking that honours Jain principles — no root vegetables, fasting-friendly, and full of flavour.
           </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/recipes"
+              className="px-6 py-3 bg-white text-orange-600 font-semibold rounded-full hover:bg-orange-50 transition-colors shadow"
+            >
+              Browse Recipes
+            </Link>
+            <Link
+              href="/submit"
+              className="px-6 py-3 bg-orange-700/50 text-white font-semibold rounded-full hover:bg-orange-700/70 transition-colors border border-orange-400"
+            >
+              Share a Recipe
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Featured */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">⭐ Top Rated</h2>
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-64 rounded-2xl bg-gray-100 animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featured.map((r) => (
+              <RecipeCard key={r.id} recipe={r} />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Browse by filter */}
+      <section className="max-w-6xl mx-auto px-4 pb-16">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <h2 className="text-2xl font-bold text-gray-900">Browse by Diet</h2>
+          <Link href="/recipes" className="text-sm text-orange-500 font-medium hover:underline">
+            View all →
+          </Link>
         </div>
-      </main>
+        <div className="mb-6">
+          <FilterBar active={activeTags} onChange={setActiveTags} />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {filtered.map((r) => (
+            <RecipeCard key={r.id} recipe={r} />
+          ))}
+        </div>
+        {filtered.length === 0 && !loading && (
+          <p className="text-center text-gray-400 py-12">No recipes match these filters yet.</p>
+        )}
+      </section>
     </div>
   );
 }

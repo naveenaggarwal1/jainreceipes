@@ -1,0 +1,72 @@
+{
+  "lastUserId": 0,
+  "lastRecipeId": 5,
+  "users": [],
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Gujarati Dal",
+      "description": "A simple, flavorful Jain dal without onion or garlic.",
+      "ingredients": "Toor dal, turmeric, ginger, green chili, cumin seeds, curry leaves, salt, jaggery, lemon juice.",
+      "steps": "1. Cook dal with turmeric and water. 2. Fry cumin, ginger, chili and curry leaves. 3. Add to dal, simmer, finish with jaggery and lemon juice.",
+      "category": "Main Dish",
+      "jainTags": "no onion/garlic, no root vegetables",
+      "authorId": 0,
+      "authorName": "Admin",
+      "createdAt": "2026-04-04T21:32:02.777Z",
+      "approved": 1
+    },
+    {
+      "id": 2,
+      "title": "Fasting Sabudana Khichdi",
+      "description": "Comforting Jain fasting khichdi made with sabudana and peanuts.",
+      "ingredients": "Sabudana, peanuts, potatoes, cumin seeds, green chili, rock salt, ghee, coriander.",
+      "steps": "1. Soak sabudana. 2. Roast peanuts. 3. Cook potatoes with spices, add sabudana, finish with coriander.",
+      "category": "Fasting",
+      "jainTags": "fasting-friendly, no onion/garlic",
+      "authorId": 0,
+      "authorName": "Admin",
+      "createdAt": "2026-04-04T21:32:02.777Z",
+      "approved": 1
+    },
+    {
+      "id": 3,
+      "title": "Jain Vegetable Pulao",
+      "description": "A fragrant pulao with peas, carrots, and mild spices that follows Jain cooking rules.",
+      "ingredients": "Basmati rice, peas, carrots, potatoes, ghee, cumin, cinnamon, cloves, green cardamom, salt.",
+      "steps": "1. Wash rice and soak. 2. Fry whole spices in ghee, add vegetables. 3. Add rice and water, cook until fluffy.",
+      "category": "Main Dish",
+      "jainTags": "no onion/garlic, vegetarian",
+      "authorId": 0,
+      "authorName": "Admin",
+      "createdAt": "2026-04-04T21:35:03.302Z",
+      "approved": 1
+    },
+    {
+      "id": 4,
+      "title": "Sabudana Vada",
+      "description": "Crispy sabudana patties perfect for Jain fasting days.",
+      "ingredients": "Sabudana, mashed potatoes, peanuts, green chili, cumin seeds, rock salt, coriander, oil.",
+      "steps": "1. Soak sabudana and combine with mashed potato, peanuts and spices. 2. Shape patties. 3. Deep fry until golden brown.",
+      "category": "Snack",
+      "jainTags": "fasting-friendly, no onion/garlic",
+      "authorId": 0,
+      "authorName": "Admin",
+      "createdAt": "2026-04-04T21:35:03.302Z",
+      "approved": 1
+    },
+    {
+      "id": 5,
+      "title": "Mango Shrikhand",
+      "description": "A creamy Jain dessert made with strained yogurt and fresh mango.",
+      "ingredients": "Hung curd, mango pulp, sugar, cardamom powder, saffron, chopped pistachios.",
+      "steps": "1. Strain curd until thick. 2. Beat with sugar and mango pulp. 3. Chill and garnish with pistachios.",
+      "category": "Dessert",
+      "jainTags": "no onion/garlic, vegetarian",
+      "authorId": 0,
+      "authorName": "Admin",
+      "createdAt": "2026-04-04T21:35:03.302Z",
+      "approved": 1
+    }
+  ]
+}
